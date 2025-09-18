@@ -16,21 +16,19 @@ export default function TextAreaInput() {
           <TextArea
             value={message}
             onChange={(value) => setMessage(value)}
-            rows={6}
           />
         </div>
 
         {/* Disabled TextArea */}
         <div>
           <Label>Description</Label>
-          <TextArea rows={6} disabled />
+          <TextArea disabled />
         </div>
 
         {/* Error TextArea */}
         <div>
           <Label>Description</Label>
           <TextArea
-            rows={6}
             value={messageTwo}
             error
             onChange={(value) => setMessageTwo(value)}
