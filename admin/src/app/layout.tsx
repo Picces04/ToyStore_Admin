@@ -3,6 +3,15 @@ import './globals.css';
 
 import { SidebarProvider } from '@/context/SidebarContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Admin-ToyWords",
+    default: "Productic",
+  },
+  description: "Được tạo bởi Tôi"
+};
 
 const outfit = Outfit({
   subsets: ["latin"],
