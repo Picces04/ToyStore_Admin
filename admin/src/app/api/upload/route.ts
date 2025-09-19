@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import envConfig from "../../../../config/envConfig";
+import { Buffer } from "buffer";
 
 cloudinary.config({
   cloud_name: envConfig.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,

@@ -29,29 +29,42 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    name: "Trang chủ",
+    subItems: [{ name: "Thống kê", path: "/", pro: false }],
   },
   {
     icon: <CalenderIcon />,
-    name: "Calendar",
+    name: "Lịch trình",
     path: "/calendar",
   },
   {
     icon: <UserCircleIcon />,
-    name: "User Profile",
+    name: "Thông tin cá nhân",
     path: "/profile",
   },
-
   {
+    name: "Quản lý",
+    icon: <TableIcon />,
+    subItems: [
+      { name: "Nhân Viên", path: "/basic-tables", pro: true },
+      { name: "Danh Mục", path: "/editable-table", pro: false },
+      { name: "Nhà Cung Cấp", path: "/advanced-table", pro: false },
+      { name: "Kho Hàng", path: "/advanced-table", pro: false },
+      { name: "Sản Phẩm", path: "/advanced-table", pro: false },
+      { name: "Khuyến Mãi", path: "/advanced-table", pro: false },
+      { name: "Đơn Hàng", path: "/advanced-table", pro: false },
+      { name: "Hóa Đơn", path: "/advanced-table", pro: false },
+      { name: "Tin Tức", path: "/advanced-table", pro: false },
+    ],
+  },
+  
+];
+
+const othersItems: NavItem[] = [
+   {
     name: "Forms",
     icon: <ListIcon />,
     subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tables",
-    icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
   },
   {
     name: "Pages",
@@ -61,9 +74,6 @@ const navItems: NavItem[] = [
       { name: "404 Error", path: "/error-404", pro: false },
     ],
   },
-];
-
-const othersItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Charts",

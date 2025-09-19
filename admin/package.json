@@ -24,7 +24,7 @@
     "autoprefixer": "^10.4.20",
     "cloudinary": "^2.7.0",
     "flatpickr": "^4.6.13",
-    "next": "15.2.3",
+    "next": "^15.2.3",
     "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",
     "react-apexcharts": "^1.7.0",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20",
+    "@types/node": "^20.19.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-transition-group": "^4.4.12",
