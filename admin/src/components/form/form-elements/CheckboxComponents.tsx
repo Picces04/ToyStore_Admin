@@ -1,37 +1,49 @@
 "use client";
-import React, { useState } from "react";
-import ComponentCard from "../../common/ComponentCard";
+import React from "react";
+import { useFormContext } from "@/context/FormContext";
 import Checkbox from "../input/Checkbox";
+import { CheckboxGroupProps } from "@/types/props";
+import Label from "../Label";
 
-export default function CheckboxComponents() {
-  const [isChecked, setIsChecked] = useState(false);
-  const [isCheckedTwo, setIsCheckedTwo] = useState(true);
-  const [isCheckedDisabled, setIsCheckedDisabled] = useState(false);
+export default function CheckboxGroup({ name, title, options }: CheckboxGroupProps) {
+  const { values, setValue, errors } = useFormContext();
+
+  // Nếu chưa có thì mặc định mảng rỗng
+  const selectedValues: any[] = Array.isArray(values[name]) ? values[name] : [];
+
+  // tìm error của field này
+  const error = errors.find((err) => err.name === name);
+
+  const handleCheckboxChange = (checked: boolean, value: any) => {
+    let newValues: any[];
+    if (checked) {
+      newValues = [...selectedValues, value];
+    } else {
+      newValues = selectedValues.filter((v) => v !== value);
+    }
+    setValue(name, newValues);
+  };
+
   return (
-    <ComponentCard title="Checkbox">
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3">
-          <Checkbox checked={isChecked} onChange={setIsChecked} />
-          <span className="block text-sm font-medium text-gray-700 dark:text-gray-400">
-            Default
-          </span>
-        </div>
-        <div className="flex items-center gap-3">
+    <div className="flex flex-col gap-1">
+      {title && <Label htmlFor={name}>{title}</Label>}
+      <div className="flex flex-wrap items-center gap-8">
+        {options.map((opt, idx) => (
           <Checkbox
-            checked={isCheckedTwo}
-            onChange={setIsCheckedTwo}
-            label="Checked"
+            key={opt.value}
+            id={`${name}-${idx}`}
+            name={name}
+            value={opt.value}
+            checked={selectedValues.includes(opt.value)}
+            onChange={(checked) => handleCheckboxChange(checked, opt.value)}
+            label={opt.label}
+            disabled={opt.disabled}
           />
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox
-            checked={isCheckedDisabled}
-            onChange={setIsCheckedDisabled}
-            disabled
-            label="Disabled"
-          />
-        </div>
+        ))}
       </div>
-    </ComponentCard>
+      {error && (
+        <p className="text-sm text-red-500 mt-1">{error.message}</p>
+      )}
+    </div>
   );
 }
