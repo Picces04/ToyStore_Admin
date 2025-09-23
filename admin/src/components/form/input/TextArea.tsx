@@ -1,84 +1,89 @@
 "use client";
 import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import Label from "../Label";
+import { BaseTextAreaProps } from "@/types/props";
 
-interface TextareaProps {
-  value?: string;
-  onChange?: (value: string) => void;
-  disabled?: boolean;
-  error?: boolean;
-  hint?: string;
-  className?: string;
-  placeholder?: string;
-}
-
-export default function TextArea({
-  value = "",
-  onChange,
+const TextArea: React.FC<BaseTextAreaProps> = ({
+  name,
+  label,
+  value,
+  placeholder = "Nhập nội dung...",
+  className = "",
   disabled = false,
   error = false,
-  hint,
-  className = "",
-  placeholder = "Enter your message",
-}: TextareaProps) {
+  message,
+  onChange,
+}) => {
   const editorRef = useRef<any>(null);
 
   return (
     <div className={`relative ${className}`}>
-      <Editor
-        apiKey="rb8401ud5yvnk1uai2vxr55oe39ajvh1fbxrfpczzxs3ypic"
-        onInit={(_evt, editor) => (editorRef.current = editor)}
-        value={value}
-        onEditorChange={(content) => {
-          if (onChange) onChange(content);
-        }}
-        init={{
-          height: 300,
-          menubar: false,
-          placeholder, // TinyMCE có hỗ trợ placeholder
-          plugins: [
-            "advlist",
-            "autolink",
-            "lists",
-            "link",
-            "image",
-            "charmap",
-            "preview",
-            "anchor",
-            "searchreplace",
-            "visualblocks",
-            "code",
-            "fullscreen",
-            "insertdatetime",
-            "media",
-            "table",
-            "code",
-            "help",
-            "wordcount",
-          ],
-          toolbar:
+      {label && <Label>{label}</Label>}
+
+      <div
+        className={`rounded-md border ${
+          error ? "border-red-500" : "border-gray-300"
+        }`}
+      >
+        <Editor
+          apiKey="rb8401ud5yvnk1uai2vxr55oe39ajvh1fbxrfpczzxs3ypic"
+          onInit={(_evt, editor) => (editorRef.current = editor)}
+          value={value}
+          onEditorChange={(content) => onChange(content)}
+          disabled={disabled}
+          init={{
+            height: 300,
+            menubar: false,
+            placeholder,
+            plugins: [
+              "advlist",
+              "autolink",
+              "lists",
+              "link",
+              "image",
+              "charmap",
+              "preview",
+              "anchor",
+              "searchreplace",
+              "visualblocks",
+              "code",
+              "fullscreen",
+              "insertdatetime",
+              "media",
+              "table",
+              "code",
+              "help",
+              "wordcount",
+            ],
+            toolbar:
               "undo redo | blocks | " +
               "bold italic forecolor | alignleft aligncenter " +
               "alignright alignjustify | bullist numlist outdent indent | " +
               "image media link | removeformat | help",
-          content_style:
-            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-          readOnly: disabled,
-          file_picker_types: 'image',
-          images_upload_url: '/api/upload',
-          automatic_uploads: true,
-        }}
-      />
+            content_style:
+              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            file_picker_types: "image",
+            images_upload_url: "/api/upload",
+            automatic_uploads: true,
+          }}
+        />
+      </div>
 
-      {hint && (
+      {/* luôn có giá trị để submit */}
+      <input type="hidden" name={name} value={value || ""} />
+
+      {message && (
         <p
           className={`mt-2 text-sm ${
-            error ? "text-red-500" : "text-gray-500 dark:text-gray-400"
+            error ? "text-red-500" : "text-gray-500"
           }`}
         >
-          {hint}
+          {message}
         </p>
       )}
     </div>
   );
-}
+};
+
+export default TextArea;

@@ -1,10 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tse1.mm.bing.net",
+        port: "",
+        pathname: "/**",
+      },
+      // Thêm các host khác nếu cần
+    ],
+  },
   webpack(config) {
+    // Thêm support SVG
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
     return config;
