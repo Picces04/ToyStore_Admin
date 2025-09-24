@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Tin Tức Đã Xóa"
 };
 
-export default function BasicTables() {
+export default function DeletedNewsPage() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Tin tức đã xóa" pageParent="Quản lý tin tức" urlPageParent="/news"/>

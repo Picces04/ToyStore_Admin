@@ -1,6 +1,5 @@
-import ComponentCard from "@/components/common/ComponentCard";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import NewsTable from "@/components/tables/main/News/NewsTable";
+import AuthorizationTable from "@/components/tables/main/Employees/AuthorizationTable";
 import { Metadata } from "next";
 import React from "react";
 
@@ -8,14 +7,12 @@ export const metadata: Metadata = {
   title: "Quản lý nhân viên"
 };
 
-export default function BasicTables() {
+export default function AuthorizationPage() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="Quản lý nhân viên"/>
-      <div className="space-y-6">
-        <ComponentCard title="Danh sách nhân viên" isDelete={true} linkBtn="employees" titleBtn="Nhân Viên" isAdd={true}>
-          <NewsTable />
-        </ComponentCard>
+      <PageBreadcrumb pageTitle="Phân quyền"/>
+      <div className={`rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]`}>
+        <AuthorizationTable/>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Thêm tin tức"
 };
 
-export default function FormElements() {
+export default function CreateNewsPage() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Thêm tin tức" pageParent="Quản lý tin tức" urlPageParent="/news" />

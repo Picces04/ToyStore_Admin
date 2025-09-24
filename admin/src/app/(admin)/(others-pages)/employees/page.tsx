@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Quản lý nhân viên"
 };
 
-export default function BasicTables() {
+export default function EmployeesPage() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Quản lý nhân viên"/>
