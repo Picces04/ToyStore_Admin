@@ -113,15 +113,15 @@ const DropzoneImageInput: React.FC<DropzoneImageInputProps> = ({
       </div>
 
       {previews.length > 0 && (
-        <div className={`mt-2 grid ${multiple ? "grid-cols-3 gap-2" : ""}`}>
+        <div className={`mt-2 grid ${multiple ? "grid-cols-5 gap-0" : ""}`}>
           {previews.map((src, idx) => (
-            <div key={idx} className="relative">
+            <div key={idx} className="relative w-[100px] h-[100px] rounded-lg border overflow-hidden">
               <Image
                 src={src}
                 alt={`Preview ${idx + 1}`}
-                className="w-full h-full object-contain rounded-lg border"
-                width={200}
-                height={200}
+                className="object-contain rounded-lg border"
+                width={100}
+                height={100}
                 unoptimized
               />
               {multiple && (
