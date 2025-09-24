@@ -17,6 +17,7 @@ import {
 } from "../icons/index";
 import { FaRegNewspaper,FaHome  } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
+import { AiOutlineProduct } from "react-icons/ai";
 import { NavItem } from "@/types/context";
 
 const navItems: NavItem[] = [
@@ -24,6 +25,11 @@ const navItems: NavItem[] = [
     icon: <FaHome size={20}/>,
     name: "Trang chủ",
     path: "/",
+  },
+  {
+    icon: <AiOutlineProduct size={20} />,
+    name: "Quản lý sản phẩm",
+    path: "/products",
   },
   // {
   //   icon: <GridIcon />,
