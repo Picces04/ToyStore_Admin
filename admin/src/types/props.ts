@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.css";
 
 export interface FileInputProps {
   id?: string;
@@ -155,3 +157,25 @@ export interface SwitchFormProps {
   disabled?: boolean;
   color?: "blue" | "gray";
 }
+
+export type DatePickerFormProps = {
+  id: string;
+  name: string;
+  label?: string;
+  className?: string;
+  placeholder?: string;
+  mode?: "single" | "multiple" | "range" | "time";
+  required?: boolean;
+};
+
+export type BaseDatePickerProps = {
+  id: string;
+  name: string;
+  className?: string;
+  mode?: "single" | "multiple" | "range" | "time";
+  defaultDate?: flatpickr.Options.DateOption;
+  placeholder?: string;
+  onChange?: (val: string | string[]) => void;
+  value?: string | string[];
+  onBlur?: () => void;
+};

@@ -1,90 +1,44 @@
 "use client";
-import { useState } from "react";
 import { useFormContext } from "@/context/FormContext";
 import Label from "../Label";
 import BaseDatePicker from "../date-picker";
-import { DateOption } from "flatpickr/dist/types/options";
-
-type PropsType = {
-  name: string;
-  id: string;
-  label?: string;
-  placeholder?: string;
-  mode?: "single" | "multiple" | "range" | "time";
-  required?: boolean;
-  defaultDate?: DateOption;
-};
+import { DatePickerFormProps } from "@/types/props";
 
 
 export default function DatePickerForm({
-  name,
   id,
+  name,
+  className,
   label,
-  placeholder,
+  placeholder = "Chọn ngày",
   mode = "single",
-  required = false,
-  defaultDate,
-}: PropsType) {
-  const { values, setValue, errors, setErrors, clearError, submitted } =
-    useFormContext();
-  const [touched, setTouched] = useState(false);
+  required,
+}: DatePickerFormProps) {
+  const { values, setValue, errors } = useFormContext();
 
-  const fieldErrors = errors.filter((err) => err.name === name);
-  const latestError = fieldErrors[fieldErrors.length - 1];
-  const showError = submitted || touched;
-  const hasError = !!latestError && showError;
-
-  const currentValue = values[name] ?? defaultDate ?? "";
-
-  const handleChange = (val: string | string[]) => {
-    setValue(name, val);
-
-    if (touched) {
-      if (
-        (!val || (Array.isArray(val) && val.length === 0)) &&
-        required
-      ) {
-        setErrors((prev) => [
-          ...prev,
-          { name, message: "Vui lòng chọn ngày" },
-        ]);
-      } else {
-        clearError(name);
-      }
-    }
-  };
-
-  const handleBlur = () => {
-    setTouched(true);
-    if (
-      (!currentValue || (Array.isArray(currentValue) && currentValue.length === 0)) &&
-      required
-    ) {
-      setErrors((prev) => [
-        ...prev,
-        { name, message: "Vui lòng chọn ngày" },
-      ]);
-    } else {
-      clearError(name);
-    }
-  };
+  // ✅ xử lý cho cả object và array
+  const errorMsg = Array.isArray(errors)
+    ? errors.find((err) => err.name === name)?.message
+    : errors?.[name];
 
   return (
     <div className="mb-4">
-      {label && <Label htmlFor={id}>{label}</Label>}
+      {label && (
+        <Label htmlFor={id} className="block mb-1 font-medium">
+          {label} {required && <span className="text-red-500">*</span>}
+        </Label>
+      )}
       <BaseDatePicker
         id={id}
+        name={name}
         mode={mode}
+        className={`${className} ${errorMsg ? "border-red-500" : "border-gray-300"} rounded px-3 py-2`}
         placeholder={placeholder}
-        defaultDate={defaultDate}
-        value={currentValue}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        value={values[name]}
+        onChange={(val) => setValue(name, val)}
       />
-      {hasError && (
-        <p className="mt-1 text-sm text-red-500">
-          {latestError?.message}
-        </p>
+      {errorMsg && (
+        <p className="text-red-500 text-sm mt-1">{errorMsg}</p>
       )}
     </div>
   );

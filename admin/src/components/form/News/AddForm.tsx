@@ -18,8 +18,7 @@ export default function AddForm() {
     if (!values.title) newErrors.push({ name: "title", message: "Tiêu đề không được để trống" });
     if (!values.content) newErrors.push({ name: "content", message: "Nội dung không được để trống" });
     if (!values.image) newErrors.push({ name: "image", message: "Vui lòng chọn ảnh" });
-    if (!values.categories || values.categories.length === 0)
-      newErrors.push({ name: "categories", message: "Vui lòng chọn ít nhất một danh mục" });
+    if (!values.publishDate) newErrors.push({ name: "publishDate", message: "Vui lòng chọn ngày đăng" });
 
     setErrors(newErrors);
 
