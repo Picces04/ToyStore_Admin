@@ -6,9 +6,13 @@ import { usePrefill } from "@/hooks/usePrefill";
 import InputForm from "../form-elements/InputForm";
 import TextAreaForm from "../form-elements/TextAreaForm";
 import ImageInputForm from "../form-elements/ImageInputForm";
+import { useNotification } from "@/context/NotificationContext";
+import { FaRegSmileBeam } from "react-icons/fa";
 
 export default function EditForm() {
   const { values, setErrors} = useFormContext();
+  const { openNotification } = useNotification();
+
 
   // Populate dữ liệu cũ (edit)
   // Populate dữ liệu cũ (edit) chỉ 1 lần khi mount
@@ -42,6 +46,14 @@ export default function EditForm() {
         // json submit
         console.log("🚀 JSON submit:", data);
       }
+      openNotification({
+        message: "Custom Notification",
+        description: "Nội dung chi tiết thông báo",
+        placement: "top",
+        duration: 3,
+        icon: <FaRegSmileBeam style={{ color: "green" }} />,
+        style: { borderLeft: "5px solid green" },
+      })
     } else {
       console.log("❌ Errors:", newErrors);
     }

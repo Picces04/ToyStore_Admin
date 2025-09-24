@@ -6,10 +6,12 @@ import InputForm from "../form-elements/InputForm";
 import TextAreaForm from "../form-elements/TextAreaForm";
 import ImageInputForm from "../form-elements/ImageInputForm";
 import DatePickerForm from "../form-elements/DatePickerForm";
+import { useNotification } from "@/context/NotificationContext";
+import { FaRegSmileBeam } from "react-icons/fa";
 
 export default function AddForm() {
   const { values, setErrors} = useFormContext();
-
+  const { openNotification } = useNotification();
 
   const handleSubmit = (data: Record<string, any> | FormData) => {
     const newErrors: { name: string; message: string }[] = [];
@@ -34,6 +36,14 @@ export default function AddForm() {
         // json submit
         console.log("🚀 JSON submit:", data);
       }
+      openNotification({
+          message: "Custom Notification",
+          description: "Nội dung chi tiết thông báo",
+          placement: "top",
+          duration: 3,
+          icon: <FaRegSmileBeam style={{ color: "green" }} />,
+          style: { borderLeft: "5px solid green" },
+        })
     } else {
       console.log("❌ Errors:", newErrors);
     }

@@ -6,9 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
   BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
@@ -17,19 +15,39 @@ import {
   TableIcon,
   UserCircleIcon,
 } from "../icons/index";
+import { FaRegNewspaper,FaHome  } from "react-icons/fa";
+import { BsFillPeopleFill } from "react-icons/bs";
 import { NavItem } from "@/types/context";
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    icon: <FaHome size={20}/>,
+    name: "Trang chủ",
+    path: "/",
+  },
+  // {
+  //   icon: <GridIcon />,
+  //   name: "Dashboard",
+  //   subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+  // },
+  {
+    icon: <FaRegNewspaper size={20} />,
+    name: "Tin Tức",
+    path: "/news",
   },
   {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
+    icon: <BsFillPeopleFill size={20}/>,
+    name: "Quản lý nhân viên",
+    subItems: [
+      { name: "Danh sách nhân viên", path: "/employees", pro: false },
+      { name: "Phân quyền", path: "/employees/authorization", pro: false }
+    ],
   },
+  // {
+  //   icon: <CalenderIcon />,
+  //   name: "Calendar",
+  //   path: "/calendar",
+  // },
   {
     icon: <UserCircleIcon />,
     name: "User Profile",

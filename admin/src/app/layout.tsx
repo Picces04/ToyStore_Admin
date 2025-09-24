@@ -2,15 +2,14 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 
 import { SidebarProvider } from '@/context/SidebarContext';
-import { ThemeProvider } from '@/context/ThemeContext';
 import { Metadata } from 'next';
+import { NotificationProvider } from '@/context/NotificationContext';
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Admin-ToyWords",
-    default: "Productic",
-  },
-  description: "Được tạo bởi Tôi"
+    default: "Admin-ToyWords",
+  }
 };
 
 const outfit = Outfit({
@@ -25,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.className} dark:bg-gray-900`}>
-        <ThemeProvider>
-          <SidebarProvider>{children}</SidebarProvider>
-        </ThemeProvider>
+        <NotificationProvider>
+          <SidebarProvider>
+            {children}
+          </SidebarProvider>
+        </NotificationProvider>
       </body>
     </html>
   );
