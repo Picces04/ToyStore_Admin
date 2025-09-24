@@ -179,3 +179,14 @@ export type BaseDatePickerProps = {
   value?: string | string[];
   onBlur?: () => void;
 };
+
+export interface ComponentCardProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string; // Additional custom classes for styling
+  desc?: string; // Description text
+  linkBtn?: string; // Link for the button
+  titleBtn?: string; // Title for the button
+  isAdd?: boolean; // Title for the button
+  isDelete?: boolean; // Title for the button
+}
