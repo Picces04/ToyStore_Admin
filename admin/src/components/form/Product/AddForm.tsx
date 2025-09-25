@@ -4,13 +4,11 @@ import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import InputForm from "../form-elements/InputForm";
 import TextAreaForm from "../form-elements/TextAreaForm";
-import DatePickerForm from "../form-elements/DatePickerForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
 import DropzoneImageInput from "../form-elements/DropZone";
 import SelectForm from "../form-elements/SelectForm";
 import SwitchForm from "../form-elements/SwitchForm";
-import RadioGroup from "../form-elements/RadioButtons";
 
 export default function AddForm() {
   const { values, setErrors} = useFormContext();
@@ -20,10 +18,9 @@ export default function AddForm() {
     const newErrors: { name: string; message: string }[] = [];
 
     // validate text fields
-    // if (!values.title) newErrors.push({ name: "title", message: "Tiêu đề không được để trống" });
-    // if (!values.content) newErrors.push({ name: "content", message: "Nội dung không được để trống" });
-    // if (!values.image) newErrors.push({ name: "image", message: "Vui lòng chọn ảnh" });
-    // if (!values.publishDate) newErrors.push({ name: "publishDate", message: "Vui lòng chọn ngày đăng" });
+    if (!values.name) newErrors.push({ name: "name", message: "Tiêu đề không được để trống" });
+    if (!values.description) newErrors.push({ name: "description", message: "Nội dung không được để trống" });
+    if (!values.images) newErrors.push({ name: "images", message: "Vui lòng chọn ảnh" });
 
     setErrors(newErrors);
 
@@ -56,15 +53,19 @@ export default function AddForm() {
     <Form onSubmit={handleSubmit} mode="multipart">
       <InputForm label="Tên sản phẩm" name="name" placeholder="Nhập tên sản phẩm" />
       <DropzoneImageInput name="images" multiple className="mt-4"/>
-      <SelectForm label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{value: '1', label: 'Category 1'}, {value: '2', label: 'Category 2'}]} />
-      <SelectForm label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{value: '1', label: 'Brand 1'}, {value: '2', label: 'Brand 2'}]} />
       <InputForm label="Giá" name="price" placeholder="Nhập giá" type="number" />
-      <SwitchForm
-                  name="switch1"
-                  defaultChecked={true}
-                  onLabel="Hot"
-                  offLabel="Normal"
-                />
+      <div className="flex flex-nowrap gap-4 mt-4 w-full justify-center">
+        <SelectForm className="w-full" label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{value: '1', label: 'Category 1'}, {value: '2', label: 'Category 2'}]} />
+        <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{value: '1', label: 'Brand 1'}, {value: '2', label: 'Brand 2'}]} />
+        <SwitchForm
+          name="switch1"
+          defaultChecked={true}
+          onLabel="Hot"
+          offLabel="Normal"
+          label="Trạng thái"
+          size="lg"
+        />
+      </div>
       <TextAreaForm label="Mô tả" name="description" placeholder="Nhập mô tả" />
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">

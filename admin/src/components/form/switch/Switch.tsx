@@ -5,6 +5,7 @@ import React, { useState } from "react";
 const Switch: React.FC<BaseSwitchProps> = ({
   id,
   name,
+  className,
   checked,
   disabled = false,
   onChange,
@@ -61,7 +62,7 @@ const Switch: React.FC<BaseSwitchProps> = ({
       onClick={handleToggle}
     >
       <div
-        className={`relative flex items-center justify-center transition duration-200 ease-in-out rounded-full ${currentSize.track} ${currentSize.height} ${switchColors.background}`}
+        className={`relative flex items-center justify-center transition duration-200 ease-in-out rounded-full ${currentSize.track} ${currentSize.height} ${switchColors.background} ${className}`}
       >
         {/* Text nằm trên nền */}
         <div

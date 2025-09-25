@@ -150,15 +150,19 @@ interface BaseSwitchProps {
   color?: "blue" | "gray";
   onLabel?: string;
   offLabel?: string;
+  className?: string;
 }
 
 interface SwitchFormProps {
   name: string;
+  label?: string;
+  size?:string;
   onLabel?: string;   // ✅ text khi bật
   offLabel?: string;  // ✅ text khi tắt";
   defaultChecked?: boolean;
   disabled?: boolean;
   color?: "blue" | "gray";
+  className?: string;
 }
 
 type DatePickerFormProps = {
@@ -216,6 +220,7 @@ interface TableBodyProps {
 interface TableRowProps {
   children: ReactNode; // Cells (th or td)
   className?: string; // Optional className for styling
+  id?:string;
 }
 
 // Props for TableCell

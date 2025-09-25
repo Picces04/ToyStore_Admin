@@ -3,14 +3,18 @@ import React from "react";
 import { useFormContext } from "@/context/FormContext";
 import { SwitchFormProps } from "@/types/props";
 import Switch from "../switch/Switch";
+import Label from "../Label";
 
 const SwitchForm: React.FC<SwitchFormProps> = ({
   name,
-  onLabel = "开启",   // ✅ text khi bật
-  offLabel = "关闭",   // ✅ text khi tắt
+  label,
+  size = "lg",
+  onLabel = "",
+  offLabel ="",
   defaultChecked = false,
   disabled,
   color = "blue",
+  className = "",
 }) => {
   const { values, setValue } = useFormContext();
 
@@ -22,16 +26,23 @@ const SwitchForm: React.FC<SwitchFormProps> = ({
   };
 
   return (
-    <Switch
-      id={name}
-      name={name} // or provide a suitable label prop here
-      checked={isChecked}
-      disabled={disabled}
-      onChange={handleChange}
-      color={color}
-      onLabel={onLabel}
-      offLabel={offLabel}
-    />
+    <>
+      <div className={`flex flex-col mb-4 ${className}`}>
+        {label && (<Label htmlFor={name}>{label}</Label>)}
+        <Switch
+          id={name}
+          size={size}
+          name={name} // or provide a suitable label prop here
+          checked={isChecked}
+          disabled={disabled}
+          onChange={handleChange}
+          color={color}
+          onLabel={onLabel}
+          offLabel={offLabel}
+          className={className}
+        />
+      </div>
+    </>
   );
 };
 
