@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 
-export interface FileInputProps {
+interface FileInputProps {
   id?: string;
   name: string;
   multiple?: boolean;
@@ -11,7 +11,7 @@ export interface FileInputProps {
   error?: boolean;
   hint?: string;
 }
-export interface DropzoneImageInputProps {
+interface DropzoneImageInputProps {
   name: string;
   multiple?: boolean;
   className?: string;
@@ -19,7 +19,7 @@ export interface DropzoneImageInputProps {
   hint?: string;
 }
 
-export interface BaseProps {
+interface BaseProps {
   name: string;
   type?: string;
   label?: string;
@@ -30,7 +30,7 @@ export interface BaseProps {
   hint?: string;
 }
 
-export interface InputProps {
+interface InputProps {
   id: string; // Unique ID cho input
   name: string; // Tên field
   type?: string; // text, email, number, password...
@@ -45,7 +45,7 @@ export interface InputProps {
   onBlur?: () => void;
 }
 
-export interface TextareaProps {
+interface TextareaProps {
   name: string;
   label?: string;
   placeholder?: string;
@@ -55,7 +55,7 @@ export interface TextareaProps {
   hint?: string;
 }
 
-export interface BaseTextAreaProps {
+interface BaseTextAreaProps {
   name: string;
   label?: string;
   value: string;
@@ -67,14 +67,14 @@ export interface BaseTextAreaProps {
   onChange: (value: string) => void;
 }
 
-export interface FormProps {
+interface FormProps {
   onSubmit: (data: Record<string, any> | FormData) => void;
   children: ReactNode;
   className?: string;
   mode?: "json" | "multipart";
 }
 
-export interface SelectFieldProps {
+interface SelectFieldProps {
   name: string;
   label?: string;
   options: { value: string; label: string }[];
@@ -85,19 +85,19 @@ export interface SelectFieldProps {
   hint?: string;
 }
 
-export interface RadioOption {
+interface RadioOption {
   value: string;
   label: string;
   disabled?: boolean;
 }
 
-export interface RadioGroupProps {
+interface RadioGroupProps {
   name: string; // tên field trong form
   title?: string; // tiêu đề (optional)
   options: RadioOption[]; // danh sách các option
 }
 
-export interface CheckboxProps {
+interface CheckboxProps {
   id?: string;
   name?: string;
   value?: any;
@@ -108,7 +108,7 @@ export interface CheckboxProps {
   onChange: (checked: boolean) => void;
 }
 
-export interface BaseSelectProps {
+interface BaseSelectProps {
   id?: string;
   name: string;
   label?: string;
@@ -127,38 +127,41 @@ export interface BaseSelectProps {
 }
 
 // Cho từng option trong CheckboxGroup
-export interface CheckboxOption {
+interface CheckboxOption {
   label: string;               // nhãn hiển thị
   value: string | number;      // giá trị của option
   disabled?: boolean;          // có disable hay không
 }
 
 // Cho toàn bộ group
-export interface CheckboxGroupProps {
+interface CheckboxGroupProps {
   name: string;                // tên field (key trong FormContext)
   title?: string;              // tiêu đề group
   options: CheckboxOption[];   // danh sách các option
 }
 
-export interface BaseSwitchProps {
+interface BaseSwitchProps {
   id?: string;
   name: string;
-  label: string;
+  size?:string;
   checked: boolean;
   disabled?: boolean;
   onChange: (checked: boolean) => void;
   color?: "blue" | "gray";
+  onLabel?: string;
+  offLabel?: string;
 }
 
-export interface SwitchFormProps {
+interface SwitchFormProps {
   name: string;
-  label: string;
+  onLabel?: string;   // ✅ text khi bật
+  offLabel?: string;  // ✅ text khi tắt";
   defaultChecked?: boolean;
   disabled?: boolean;
   color?: "blue" | "gray";
 }
 
-export type DatePickerFormProps = {
+type DatePickerFormProps = {
   id: string;
   name: string;
   label?: string;
@@ -168,7 +171,7 @@ export type DatePickerFormProps = {
   required?: boolean;
 };
 
-export type BaseDatePickerProps = {
+type BaseDatePickerProps = {
   id: string;
   name: string;
   className?: string;
@@ -180,7 +183,7 @@ export type BaseDatePickerProps = {
   onBlur?: () => void;
 };
 
-export interface ComponentCardProps {
+interface ComponentCardProps {
   title: string;
   children: React.ReactNode;
   className?: string; // Additional custom classes for styling
@@ -190,3 +193,61 @@ export interface ComponentCardProps {
   isAdd?: boolean; // Title for the button
   isDelete?: boolean; // Title for the button
 }
+
+// Props for Table
+interface TableProps {
+  children: ReactNode; // Table content (thead, tbody, etc.)
+  className?: string; // Optional className for styling
+}
+
+// Props for TableHeader
+interface TableHeaderProps {
+  children: ReactNode; // Header row(s)
+  className?: string; // Optional className for styling
+}
+
+// Props for TableBody
+interface TableBodyProps {
+  children: ReactNode; // Body row(s)
+  className?: string; // Optional className for styling
+}
+
+// Props for TableRow
+interface TableRowProps {
+  children: ReactNode; // Cells (th or td)
+  className?: string; // Optional className for styling
+}
+
+// Props for TableCell
+interface TableCellProps {
+  children: ReactNode; // Cell content
+  isHeader?: boolean; // If true, renders as <th>, otherwise <td>
+  className?: string; // Optional className for styling
+  colSpan ?: number; // Optional colspan,
+  rowSpan ?: number; // Optional rowspan,
+}
+
+export type {
+  FileInputProps,
+  DropzoneImageInputProps,
+  BaseProps,
+  InputProps,
+  TextareaProps,
+  BaseTextAreaProps,
+  FormProps,
+  SelectFieldProps,
+  RadioGroupProps,
+  CheckboxProps,
+  BaseSelectProps,
+  CheckboxGroupProps,
+  BaseSwitchProps,
+  SwitchFormProps,
+  DatePickerFormProps,
+  BaseDatePickerProps,
+  ComponentCardProps,
+  TableProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+};
