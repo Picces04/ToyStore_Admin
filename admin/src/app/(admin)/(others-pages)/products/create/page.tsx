@@ -1,19 +1,19 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import EditForm from "@/components/form/Product/EditForm";
+import AddForm from "@/components/form/Product/AddForm";
 import { FormProvider } from "@/context/FormContext";
 import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Sửa sản phẩm"
+  title: "Thêm sản phẩm"
 };
 
-export default function EditProductPage() {
+export default function CreateNewsPage() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="Sửa sản phẩm" pageParent="Quản lý sản phẩm" urlPageParent="/products" />
+      <PageBreadcrumb pageTitle="Thêm sản phẩm" pageParent="Quản lý sản phẩm" urlPageParent="/products" />
       <FormProvider >
-        <EditForm />
+        <AddForm />
       </FormProvider>
     </div>
   );
