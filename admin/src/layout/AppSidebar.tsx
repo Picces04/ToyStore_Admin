@@ -15,29 +15,34 @@ import {
   TableIcon,
   UserCircleIcon,
 } from "../icons/index";
-import { FaRegNewspaper,FaHome  } from "react-icons/fa";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { AiOutlineProduct } from "react-icons/ai";
+import { FaRegNewspaper } from "react-icons/fa";
+import { BsPeople } from "react-icons/bs";
+import { AiOutlineProduct,AiOutlineHome } from "react-icons/ai";
+import { RiDiscountPercentLine } from "react-icons/ri";
+import { GrDeliver } from "react-icons/gr";
+import { LiaWarehouseSolid } from "react-icons/lia";
+import { MdBorderColor } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 import { NavItem } from "@/types/context";
 
 const navItems: NavItem[] = [
   {
-    icon: <FaHome size={20}/>,
+    icon: <AiOutlineHome size={20}/>,
     name: "Trang chủ",
     path: "/",
   },
   {
-    icon: <AiOutlineProduct size={20} />,
+    icon: <CgProfile size={20} />,
     name: "Quản lý khách hàng",
     path: "/customers",
   },
   {
-    icon: <AiOutlineProduct size={20} />,
+    icon: <GrDeliver size={20} />,
     name: "Quản lý nhà cung cấp",
     path: "/suppliers",
   },
   {
-    icon: <AiOutlineProduct size={20} />,
+    icon: <LiaWarehouseSolid size={20} />,
     name: "Quản lý kho hàng",
     path: "/warehouses",
   },
@@ -45,6 +50,11 @@ const navItems: NavItem[] = [
     icon: <AiOutlineProduct size={20} />,
     name: "Quản lý sản phẩm",
     path: "/products",
+  },
+  {
+    icon: <MdBorderColor size={20} />,
+    name: "Quản lý đơn hàng",
+    path: "/orders",
   },
   // {
   //   icon: <GridIcon />,
@@ -57,7 +67,12 @@ const navItems: NavItem[] = [
     path: "/news",
   },
   {
-    icon: <BsFillPeopleFill size={20}/>,
+    icon: <RiDiscountPercentLine size={20} />,
+    name: "Khuyễn mãi",
+    path: "/promotions",
+  },
+  {
+    icon: <BsPeople size={20}/>,
     name: "Quản lý nhân viên",
     subItems: [
       { name: "Danh sách nhân viên", path: "/employees", pro: false },
