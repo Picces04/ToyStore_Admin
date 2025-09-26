@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
   onBlur,
 }) => {
   return (
-    <div className={`flex flex-col ${className}`}>
+    <div className={`flex flex-col mt-4 ${className}`}>
       {label && (
         <label
           htmlFor={id}

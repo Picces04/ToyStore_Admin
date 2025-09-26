@@ -29,11 +29,10 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
   );
 
   return (
-    <div className={`flex flex-col mb-4 ${className}`}>
+    <div className={`flex flex-col mt-4 mb-4 ${className}`}>
       {label && <Label htmlFor={id ?? name}>{label}</Label>}
 
       <Select
-        style={{ width: "100%" }}
         allowClear
         mode={mode}
         value={value}
@@ -44,7 +43,10 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
         disabled={disabled}
         onSearch={onSearch}
         filterOption={false} // tắt filter mặc định
-        className={error ? "border-red-500 rounded-md" : "border-gray-300"}
+        className={`rounded-md border px-4 py-10${
+          error ? "border-red-500" : "border-gray-300"
+        }`}
+        size="large"
         popupRender={(menu) =>
           mode === "multiple" && options.length > 0 ? (
             <div className="rounded-md shadow-lg">
