@@ -4,7 +4,7 @@ import {
 } from "../../../ui/table";
 
 import TableHeaderOne from "../../header/TableHeaderOne";
-import NewsTableBody from "../../body/News/NewsTableBody";
+import OrdersTableBody from "../../body/Orders/OrdersTableBody";
 
 interface Order {
   id: number;
@@ -21,7 +21,7 @@ interface Order {
   budget: string;
 }
 
-const title = ["STT",'Hình ảnh','Tiêu đề',"Ngày tạo","Người tạo","Người duyệt","Hàng động"]
+const title = ["STT",'Khách hàng','Số điện thoại',"Địa chỉ","Thời gian đặt","Tổng tiền","Người cập nhật","Trạng thái","Hàng động"]
 
 // Define the table data using the interface
 const tableData: Order[] = [
@@ -109,7 +109,7 @@ const tableData: Order[] = [
   },
 ];
 
-export default function NewsTable() {
+export default function OrdersTable() {
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -119,7 +119,7 @@ export default function NewsTable() {
             <TableHeaderOne title={title}/>
 
             {/* Table Body */}
-            <NewsTableBody tableData={tableData}/>
+            <OrdersTableBody tableData={tableData}/>
           </Table>
         </div>
       </div>

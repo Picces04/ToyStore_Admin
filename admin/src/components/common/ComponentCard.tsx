@@ -14,6 +14,7 @@ interface ComponentCardProps {
   titleBtn?: string; // Title for the button
   isAdd?: boolean; // Title for the button
   isDelete?: boolean; // Title for the button
+  isOrder?: boolean; // Title for the button
 }
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
@@ -25,6 +26,7 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   titleBtn,
   isAdd,
   isDelete,
+  isOrder=false,
 }) => {
   return (
     <div
@@ -51,7 +53,7 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
                 </Button>
               )}
             </Link>
-            {!isDelete ? (
+            {!isOrder && (!isDelete ? (
               <Link href={"/"+linkBtn+"/deleted"}>
                 <Button size="sm" variant="outline_danger" startIcon={<RiDeleteBin5Fill />}>
                   {titleBtn} Đã Xóa
@@ -63,7 +65,7 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
                   Quản Lý {titleBtn}
                 </Button>
               </Link>
-            )}
+            ))}
           </div>
         )}
       </div>
