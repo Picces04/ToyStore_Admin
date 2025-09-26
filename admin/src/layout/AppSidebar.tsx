@@ -28,6 +28,16 @@ const navItems: NavItem[] = [
   },
   {
     icon: <AiOutlineProduct size={20} />,
+    name: "Quản lý nhà cung cấp",
+    path: "/suppliers",
+  },
+  {
+    icon: <AiOutlineProduct size={20} />,
+    name: "Quản lý kho hàng",
+    path: "/warehouses",
+  },
+  {
+    icon: <AiOutlineProduct size={20} />,
     name: "Quản lý sản phẩm",
     path: "/products",
   },

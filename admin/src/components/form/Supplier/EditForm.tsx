@@ -3,13 +3,11 @@ import { useFormContext } from "@/context/FormContext";
 import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import InputForm from "../form-elements/InputForm";
-import TextAreaForm from "../form-elements/TextAreaForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
-import DropzoneImageInput from "../form-elements/DropZone";
-import SelectForm from "../form-elements/SelectForm";
-import SwitchForm from "../form-elements/SwitchForm";
+
 import { usePrefill } from "@/hooks/usePrefill";
+
 
 export default function EditForm() {
     const { values, setErrors } = useFormContext();
@@ -61,25 +59,14 @@ export default function EditForm() {
 
     return (
         <Form onSubmit={handleSubmit} mode="multipart">
-            <InputForm label="Tên sản phẩm" name="name" placeholder="Nhập tên sản phẩm" />
-            <DropzoneImageInput name="images" multiple className="mt-4" />
-            <InputForm label="Giá" name="price" placeholder="Nhập giá" type="number" />
-            <div className="flex flex-nowrap gap-4 mt-4 w-full justify-center">
-                <SelectForm className="w-full" label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{ value: '1', label: 'Category 1' }, { value: '2', label: 'Category 2' }]} />
-                <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{ value: '1', label: 'Brand 1' }, { value: '2', label: 'Brand 2' }]} />
-                <SwitchForm
-                    name="switch1"
-                    defaultChecked={true}
-                    onLabel="Hot"
-                    offLabel="Normal"
-                    label="Trạng thái"
-                    size="lg"
-                />
-            </div>
-            <TextAreaForm label="Mô tả" name="description" placeholder="Nhập mô tả" />
+            <InputForm label="Tên nhà cung cấp" name="name" placeholder="Nhập tên nhà cung cấp" />
+            <InputForm label="Số điện thoại" name="phone" placeholder="Nhập số điện thoại" />
+            <InputForm label="Email" name="email" placeholder="Nhập email" />
+            <InputForm label="Địa chỉ" name="address" placeholder="Nhập địa chỉ" />
+            <InputForm label="Ghi chú" name="note" placeholder="Nhập ghi chú" />
             <div className="flex justify-center">
                 <Button type="submit" variant="primary" className="mt-4" size="md">
-                    Thêm Sản Phẩm
+                    Sửa Nhà Cung Cấp
                 </Button>
             </div>
         </Form>
