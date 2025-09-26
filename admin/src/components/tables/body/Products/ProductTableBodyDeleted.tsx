@@ -80,7 +80,7 @@ const ProductTableBodyDelete: React.FC<NewsTableBodyProps> = ({
                   Khôi phục
                 </Button>
                 <Button className="w-20" size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
-                  Xóa vĩnh viễn
+                  Xóa
                 </Button>
               </div>
             </TableCell>
