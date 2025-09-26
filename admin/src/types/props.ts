@@ -95,6 +95,9 @@ interface RadioGroupProps {
   name: string; // tên field trong form
   title?: string; // tiêu đề (optional)
   options: RadioOption[]; // danh sách các option
+  defaultValue?: string; 
+  className?: string;
+  onChange?: (value: string) => void;
 }
 
 interface CheckboxProps {

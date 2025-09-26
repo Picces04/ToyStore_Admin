@@ -10,19 +10,19 @@ import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
 
 export default function EditForm() {
-  const { values, setErrors} = useFormContext();
+  const { values, setErrors } = useFormContext();
   const { openNotification } = useNotification();
 
 
   // Populate dữ liệu cũ (edit)
   // Populate dữ liệu cũ (edit) chỉ 1 lần khi mount
   usePrefill({
-  title: "Tiêu đề có sẵn",
-  content: "<p>Nội dung có sẵn</p>",
-  category: ["news"],
-  email: "abc@example.com",
-  image: "https://tse1.mm.bing.net/th/id/OIP.CFG1RgZ9gTRtNgk_wWxG8QHaEO?rs=1&pid=ImgDetMain&o=7&rm=3",
-});
+    title: "Tiêu đề có sẵn",
+    content: "<p>Nội dung có sẵn</p>",
+    category: ["news"],
+    email: "abc@example.com",
+    image: "https://tse1.mm.bing.net/th/id/OIP.CFG1RgZ9gTRtNgk_wWxG8QHaEO?rs=1&pid=ImgDetMain&o=7&rm=3",
+  });
 
 
   const handleSubmit = (data: Record<string, any> | FormData) => {

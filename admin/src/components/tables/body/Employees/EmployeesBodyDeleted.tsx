@@ -38,26 +38,29 @@ const EmployeesBodyDeleted: React.FC<NewsTableBodyProps> = ({
       <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
         {tableData.map((order) => (
           <TableRow key={order.id}>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+            <TableCell className="px-4 py-1 text-gray-500 text-start text-theme-sm dark:text-gray-400">
               {order.id}
             </TableCell>
             
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-start text-theme-sm dark:text-gray-400">
               Nguyễn Văn A
             </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-start text-theme-sm dark:text-gray-400">
               0912345678
             </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-theme-sm dark:text-gray-400">
               vanapx2004@gmail.com
             </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-theme-sm dark:text-gray-400">
+              Nhân viên
+            </TableCell>
+            <TableCell className="px-2 py-1 text-gray-500 text-theme-sm dark:text-gray-400">
               28/8/2025
             </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-theme-sm dark:text-gray-400">
               Nguyễn Văn B
             </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+            <TableCell className="px-2 py-1 text-gray-500 text-theme-sm dark:text-gray-400">
               <div className="flex flex-col gap-2">
                 <Button onClick={openModal} className="w-20" size="xxs" variant="info" startIcon={<FaEye />}>
                   Chi tiết

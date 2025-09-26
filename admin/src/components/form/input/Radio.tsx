@@ -4,11 +4,12 @@ interface RadioProps {
   id: string; // Unique ID for the radio button
   name: string; // Radio group name
   value: string; // Value of the radio button
-  checked: boolean; // Whether the radio button is checked
+  checked?: boolean; // Controlled checked state
+  defaultChecked?: boolean; // Uncontrolled default checked state
   label: string; // Label for the radio button
-  onChange: (value: string) => void; // Handler for value change
+  onChange?: (value: string) => void; // Handler for value change
   className?: string; // Optional additional classes
-  disabled?: boolean; // Optional disabled state for the radio button
+  disabled?: boolean; // Optional disabled state
 }
 
 const Radio: React.FC<RadioProps> = ({
@@ -16,6 +17,7 @@ const Radio: React.FC<RadioProps> = ({
   name,
   value,
   checked,
+  defaultChecked,
   label,
   onChange,
   className = "",
@@ -24,7 +26,7 @@ const Radio: React.FC<RadioProps> = ({
   return (
     <label
       htmlFor={id}
-      className={`relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium ${
+      className={`relative flex cursor-pointer select-none items-center gap-3 text-sm font-medium ${
         disabled
           ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
           : "text-gray-700 dark:text-gray-400"
@@ -36,13 +38,16 @@ const Radio: React.FC<RadioProps> = ({
         type="radio"
         value={value}
         checked={checked}
-        onChange={() => !disabled && onChange(value)} // Prevent onChange when disabled
+        defaultChecked={defaultChecked}
+        onChange={(e) => !disabled && onChange?.(e.target.value)}
         className="sr-only"
-        disabled={disabled} // Disable input
+        disabled={disabled}
+        role="radio"
+        aria-checked={checked}
       />
       <span
-        className={`flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] ${
-          checked
+        className={`flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] transition-colors duration-200 ${
+          checked || defaultChecked
             ? "border-brand-500 bg-brand-500"
             : "bg-transparent border-gray-300 dark:border-gray-700"
         } ${
@@ -53,7 +58,7 @@ const Radio: React.FC<RadioProps> = ({
       >
         <span
           className={`h-2 w-2 rounded-full bg-white ${
-            checked ? "block" : "hidden"
+            checked || defaultChecked ? "block" : "hidden"
           }`}
         ></span>
       </span>

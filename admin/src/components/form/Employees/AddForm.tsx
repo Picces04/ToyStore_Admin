@@ -3,11 +3,10 @@ import { useFormContext } from "@/context/FormContext";
 import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import InputForm from "../form-elements/InputForm";
-import TextAreaForm from "../form-elements/TextAreaForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
 import SelectForm from "../form-elements/SelectForm";
-import SwitchForm from "../form-elements/SwitchForm";
+import RadioGroup from "../form-elements/RadioButtons";
 
 export default function AddForm() {
   const { values, setErrors} = useFormContext();
@@ -52,25 +51,29 @@ export default function AddForm() {
     <Form onSubmit={handleSubmit}>
       <InputForm label="Tên nhân viên" name="name" placeholder="Nhập tên nhân viên" />
       <InputForm label="Số điện thoại" name="phone" placeholder="Nhập số điện thoại" />
-      <InputForm label="Email" name="email" placeholder="Nhập email" />
+      <InputForm label="Email" name="email" placeholder="Nhập email" type="email"/>
+      <InputForm label="Mật khẩu" name="password" placeholder="Nhập mật khẩu" type="password"/>
+      <InputForm label="Xác nhận mật khẩu" name="confirmPassword" placeholder="Nhập lại mật khẩu" type="password"/>
       <SelectForm className="w-full" label="Vai trò" name="role" placeholder="Chọn vai trò" options={[{value: '1', label: 'Role 1'}, {value: '2', label: 'Role 2'}]} />
-      <InputForm label="Giá" name="price" placeholder="Nhập giá" type="number" />
-      <div className="flex flex-nowrap gap-4 mt-4 w-full justify-center">
-        <SelectForm className="w-full" label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{value: '1', label: 'Category 1'}, {value: '2', label: 'Category 2'}]} />
-        <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{value: '1', label: 'Brand 1'}, {value: '2', label: 'Brand 2'}]} />
-        <SwitchForm
-          name="switch1"
-          defaultChecked={true}
-          onLabel="Hot"
-          offLabel="Normal"
-          label="Trạng thái"
-          size="lg"
-        />
-      </div>
-      <TextAreaForm label="Mô tả" name="description" placeholder="Nhập mô tả" />
+      <RadioGroup title="Trạng thái" name="status" options={
+        [
+          {
+            value: '1',
+            label: 'Hoạt động',
+          },
+          {
+            value: '2',
+            label: 'Ngừng hoạt động',
+          },
+          {
+            value: '3',
+            label: 'Chờ xác nhận',
+          }
+        ]
+      } defaultValue="1"/>
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">
-          Thêm Sản Phẩm
+          Thêm nhân viên
         </Button>
       </div>
     </Form>
