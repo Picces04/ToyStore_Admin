@@ -3,34 +3,23 @@ import { useFormContext } from "@/context/FormContext";
 import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import InputForm from "../form-elements/InputForm";
-import TextAreaForm from "../form-elements/TextAreaForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
-import DropzoneImageInput from "../form-elements/DropZone";
 import SelectForm from "../form-elements/SelectForm";
 import SwitchForm from "../form-elements/SwitchForm";
-import { usePrefill } from "@/hooks/usePrefill";
+import DatePickerForm from "../form-elements/DatePickerForm";
 
-export default function EditForm() {
+export default function AddForm() {
     const { values, setErrors } = useFormContext();
     const { openNotification } = useNotification();
-
-    usePrefill({
-        name: "Tên Sản Phẩm",
-        images: ["https://tse1.mm.bing.net/th/id/OIP.CFG1RgZ9gTRtNgk_wWxG8QHaEO?rs=1&pid=ImgDetMain&o=7&rm=3"],
-        category: ["1"],
-        brand: ["1"],
-        price: 100000,
-        description: "Mô tả sản phẩm",
-    });
 
     const handleSubmit = (data: Record<string, any> | FormData) => {
         const newErrors: { name: string; message: string }[] = [];
 
         // validate text fields
-        if (!values.name) newErrors.push({ name: "name", message: "Tiêu đề không được để trống" });
-        if (!values.description) newErrors.push({ name: "description", message: "Nội dung không được để trống" });
-        if (!values.images) newErrors.push({ name: "images", message: "Vui lòng chọn ảnh" });
+        // if (!values.name) newErrors.push({ name: "name", message: "Tiêu đề không được để trống" });
+        // if (!values.description) newErrors.push({ name: "description", message: "Nội dung không được để trống" });
+        // if (!values.images) newErrors.push({ name: "images", message: "Vui lòng chọn ảnh" });
 
         setErrors(newErrors);
 
@@ -62,24 +51,31 @@ export default function EditForm() {
     return (
         <Form onSubmit={handleSubmit} mode="multipart">
             <InputForm label="Tên sản phẩm" name="name" placeholder="Nhập tên sản phẩm" />
-            <DropzoneImageInput name="images" multiple className="mt-4" />
-            <InputForm label="Giá" name="price" placeholder="Nhập giá" type="number" />
+            <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{ value: '1', label: 'Brand 1' }, { value: '2', label: 'Brand 2' }]} />
+            <DatePickerForm
+                id="publishDate"
+                name="publishDate"
+                label="Ngày nhập kho"
+                placeholder="Chọn ngày nhập kho"
+                mode="single"
+                required
+            />
             <div className="flex flex-nowrap gap-4 mt-4 w-full justify-center">
-                <SelectForm className="w-full" label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{ value: '1', label: 'Category 1' }, { value: '2', label: 'Category 2' }]} />
-                <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{ value: '1', label: 'Brand 1' }, { value: '2', label: 'Brand 2' }]} />
+                <InputForm label="Giá" name="price" className="w-full" placeholder="Nhập giá" type="number" />
+                <InputForm label="Số lượng" name="quantity" className="w-full" placeholder="Nhập số lượng" type="number" />
+                <InputForm label="Tổng tiền" name="total" className="w-full" disabled/>
                 <SwitchForm
                     name="switch1"
                     defaultChecked={true}
-                    onLabel="Hot"
-                    offLabel="Normal"
+                    onLabel="Hàng mới"
+                    offLabel="Hàng cũ"
                     label="Trạng thái"
-                    size="lg"
+                    size="xl"
                 />
             </div>
-            <TextAreaForm label="Mô tả" name="description" placeholder="Nhập mô tả" />
             <div className="flex justify-center">
                 <Button type="submit" variant="primary" className="mt-4" size="md">
-                    Thêm Sản Phẩm
+                    Thêm Sản Phẩm Vào Kho
                 </Button>
             </div>
         </Form>

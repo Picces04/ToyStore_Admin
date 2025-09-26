@@ -10,6 +10,7 @@ import DropzoneImageInput from "../form-elements/DropZone";
 import SelectForm from "../form-elements/SelectForm";
 import SwitchForm from "../form-elements/SwitchForm";
 import { usePrefill } from "@/hooks/usePrefill";
+import DatePickerForm from "../form-elements/DatePickerForm";
 
 export default function EditForm() {
     const { values, setErrors } = useFormContext();
@@ -62,24 +63,31 @@ export default function EditForm() {
     return (
         <Form onSubmit={handleSubmit} mode="multipart">
             <InputForm label="Tên sản phẩm" name="name" placeholder="Nhập tên sản phẩm" />
-            <DropzoneImageInput name="images" multiple className="mt-4" />
-            <InputForm label="Giá" name="price" placeholder="Nhập giá" type="number" />
+            <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{ value: '1', label: 'Brand 1' }, { value: '2', label: 'Brand 2' }]} />
+            <DatePickerForm
+                id="publishDate"
+                name="publishDate"
+                label="Ngày nhập kho"
+                placeholder="Chọn ngày nhập kho"
+                mode="single"
+                required
+            />
             <div className="flex flex-nowrap gap-4 mt-4 w-full justify-center">
-                <SelectForm className="w-full" label="Danh mục" name="category" placeholder="Chọn danh mục" options={[{ value: '1', label: 'Category 1' }, { value: '2', label: 'Category 2' }]} />
-                <SelectForm className="w-full" label="Thương hiệu" name="brand" placeholder="Chọn thương hiệu" options={[{ value: '1', label: 'Brand 1' }, { value: '2', label: 'Brand 2' }]} />
+                <InputForm label="Giá" name="price" className="w-full" placeholder="Nhập giá" type="number" />
+                <InputForm label="Số lượng" name="quantity" className="w-full" placeholder="Nhập số lượng" type="number" />
+                <InputForm label="Tổng tiền" name="total" className="w-full" disabled />
                 <SwitchForm
                     name="switch1"
                     defaultChecked={true}
                     onLabel="Hot"
                     offLabel="Normal"
                     label="Trạng thái"
-                    size="lg"
+                    size="xl"
                 />
             </div>
-            <TextAreaForm label="Mô tả" name="description" placeholder="Nhập mô tả" />
             <div className="flex justify-center">
                 <Button type="submit" variant="primary" className="mt-4" size="md">
-                    Thêm Sản Phẩm
+                    Sửa Sản Phẩm Trong Kho
                 </Button>
             </div>
         </Form>
