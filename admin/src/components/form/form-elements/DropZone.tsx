@@ -81,11 +81,10 @@ const DropzoneImageInput: React.FC<DropzoneImageInputProps> = ({
     <div className={`flex flex-col ${className}`}>
       <div
         {...getRootProps()}
-        className={`transition border border-dashed rounded-xl p-3 cursor-pointer ${
-          isDragActive
+        className={`transition border border-dashed rounded-xl p-3 cursor-pointer ${isDragActive
             ? "border-brand-500 bg-gray-100 dark:bg-gray-800"
             : "border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"
-        }`}
+          }`}
       >
         <input {...getInputProps()} />
 
@@ -110,33 +109,34 @@ const DropzoneImageInput: React.FC<DropzoneImageInputProps> = ({
           </span>
           <span className="font-medium underline text-brand-500">Browse File</span>
         </div>
+        {previews.length > 0 && (
+          <div className={`mt-2 grid ${multiple ? "grid-cols-3 gap-0" : ""}`}>
+            {previews.map((src, idx) => (
+              <div key={idx} className="relative w-[350px] h-[200px] rounded-lg border overflow-hidden">
+                <Image
+                  src={src}
+                  alt={`Preview ${idx + 1}`}
+                  className="object-contain rounded-lg border"
+                  width={350}
+                  height={200}
+                  unoptimized
+                />
+                {multiple && (
+                  <button
+                    type="button"
+                    onClick={() => handleRemove(idx)}
+                    className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
-      {previews.length > 0 && (
-        <div className={`mt-2 grid ${multiple ? "grid-cols-3 gap-0" : ""}`}>
-          {previews.map((src, idx) => (
-            <div key={idx} className="relative w-[350px] h-[200px] rounded-lg border overflow-hidden">
-              <Image
-                src={src}
-                alt={`Preview ${idx + 1}`}
-                className="object-contain rounded-lg border"
-                width={350}
-                height={200}
-                unoptimized
-              />
-              {multiple && (
-                <button
-                  type="button"
-                  onClick={() => handleRemove(idx)}
-                  className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+
 
       {message && (
         <p className={`mt-1 text-sm ${hasError ? "text-red-500" : "text-gray-500"}`}>

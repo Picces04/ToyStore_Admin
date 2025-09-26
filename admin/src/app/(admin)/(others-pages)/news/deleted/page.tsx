@@ -13,7 +13,7 @@ export default function DeletedNewsPage() {
     <div>
       <PageBreadcrumb pageTitle="Tin tức đã xóa" pageParent="Quản lý tin tức" urlPageParent="/news"/>
       <div className="space-y-6">
-        <ComponentCard title="Danh sách tin tức" linkBtn="news" titleBtn="Tin Tức" isDelete={false}>
+        <ComponentCard title="Danh sách tin tức" linkBtn="news" titleBtn="Tin Tức" isDelete={true}>
           <NewsTableDelete />
         </ComponentCard>
       </div>

@@ -1,18 +1,27 @@
+"use client"
 import Button from "@/components/ui/button/Button";
 import { Table } from "@/components/ui/table";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TableHeaderOne from "../../header/TableHeaderOne";
 import AuthorizationBody from "../../body/Employees/AuthorizationBody";
 
 interface Role {
   id: string;
   name: string;
+  value?: boolean;
 }
 
 interface Order {
   id: number;
   name: string;
   role: Role[];
+}
+
+interface permissionsUser{
+  manager:string[],
+  salesperson:string[],
+  warehouse_staff:string[],
+  accounting:string[]
 }
 
 const title = ["Chức năng",'Quản lý cửa hàng',"Nhân viên bán hàng","Nhân viên kho","Kế toán"]
@@ -114,13 +123,29 @@ const tableData:Order[] = [
     ]
   }
 ];
+const role:permissionsUser={
+  manager:["view_product","add_product","edit_product","delete_product","reset_product"],
+  salesperson:["view_product","add_order","update_order"],
+  warehouse_staff:[],
+  accounting:[]
+}
 
 export default function BasicTables() {
+  const [permissions, setPermissions] = useState<any[]>([]);
+  const [dataResult,setDataResult] = useState<permissionsUser>(role);
+  //const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    setPermissions(tableData)
+    setDataResult(role)
+  },[])
+  const handleSave = () => {
+    console.log("Sau khi phân quyền: "+ JSON.stringify(dataResult, null, 2) )
+  }
   return (
     <div>
         <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800">
           <div className="px-6 py-5">
-            <Button size="sm" variant="info">
+            <Button size="sm" variant="info" onClick={handleSave}>
                 Phân quyền
             </Button>
           </div>
@@ -132,7 +157,7 @@ export default function BasicTables() {
             {/* Table Header */}
             <TableHeaderOne title={title}/>
             {/* Table Body */}
-            <AuthorizationBody tableData={tableData} />
+            <AuthorizationBody onChange={setDataResult} tableData={permissions} role={role}/>
           </Table>
         </div>
       </div>

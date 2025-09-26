@@ -6,13 +6,12 @@ import {
   TableRow,
 } from "../../../ui/table";
 
-import { RiResetLeftFill } from "react-icons/ri";
-
-import Image from "next/image";
 import Button from "@/components/ui/button/Button";
-import { FaDeleteLeft, FaEye } from "react-icons/fa6";
-import { useModal } from "@/hooks/useModal";
+import { FaEye  } from "react-icons/fa";
+import { FaDeleteLeft } from "react-icons/fa6";
 import { Modal } from "@/components/ui/modal";
+import { useModal } from "@/hooks/useModal";
+import { RiResetLeftFill } from "react-icons/ri";
 
 interface User {
   image: string;
@@ -30,7 +29,7 @@ interface NewsTableBodyProps {
   tableData: NewsTableRow[];
 }
 
-const NewsTableBodyDelete: React.FC<NewsTableBodyProps> = ({
+const EmployeesBodyDeleted: React.FC<NewsTableBodyProps> = ({
   tableData,
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
@@ -44,25 +43,19 @@ const NewsTableBodyDelete: React.FC<NewsTableBodyProps> = ({
             </TableCell>
             
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              <div className="flex -space-x-2">
-                <div className="w-15 h-15 overflow-hidden rounded-full">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={order.user.image}
-                    alt={order.user.name}
-                  />
-                </div>
-              </div>
+              Nguyễn Văn A
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              {order.projectName}
+              0912345678
+            </TableCell>
+            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+              vanapx2004@gmail.com
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               28/8/2025
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              Nguyễn Văn A
+              Nguyễn Văn B
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               <div className="flex flex-col gap-2">
@@ -96,4 +89,4 @@ const NewsTableBodyDelete: React.FC<NewsTableBodyProps> = ({
   );
 }
 
-export default NewsTableBodyDelete;
+export default EmployeesBodyDeleted;

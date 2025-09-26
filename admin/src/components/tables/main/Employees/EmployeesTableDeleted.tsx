@@ -1,7 +1,7 @@
 import { Table } from "@/components/ui/table";
 import React from "react";
 import TableHeaderOne from "../../header/TableHeaderOne";
-import EmployeesBody from "../../body/Employees/EmployeesBody";
+import EmployeesBodyDeleted from "../../body/Employees/EmployeesBodyDeleted";
 
 interface Order {
     id: number;
@@ -18,7 +18,7 @@ interface Order {
     budget: string;
 }
 
-const title = ["STT", 'Tên nhân viên', 'số điện thoại', 'Email', "Ngày thuê", "Người thêm", "Người sửa","Hành động"]
+const title = ["STT", 'Tên nhân viên', 'số điện thoại', 'Email', "Ngày thuê", "Người xóa","Hành động"]
 
 // Define the table data using the interface
 const tableData: Order[] = [
@@ -106,7 +106,7 @@ const tableData: Order[] = [
     },
 ];
 
-export default function EmployeesTable() {
+export default function EmployeesTableDeleted() {
     return (
         <div>
             <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -117,7 +117,7 @@ export default function EmployeesTable() {
                             <TableHeaderOne title={title} />
 
                             {/* Table Body */}
-                            <EmployeesBody tableData={tableData} />
+                            <EmployeesBodyDeleted tableData={tableData} />
                         </Table>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ export default function NewsPage() {
     <div>
       <PageBreadcrumb pageTitle="Quản lý tin tức"/>
       <div className="space-y-6">
-        <ComponentCard title="Danh sách tin tức" isDelete={true} linkBtn="news" titleBtn="Tin Tức" isAdd={true}>
+        <ComponentCard title="Danh sách tin tức" isDelete={false} linkBtn="news" titleBtn="Tin Tức" isAdd={true}>
           <NewsTable />
         </ComponentCard>
       </div>

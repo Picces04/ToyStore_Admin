@@ -10,7 +10,7 @@ import { RiResetLeftFill } from "react-icons/ri";
 
 import Image from "next/image";
 import Button from "@/components/ui/button/Button";
-import { FaEye } from "react-icons/fa6";
+import { FaDeleteLeft, FaEye } from "react-icons/fa6";
 import { useModal } from "@/hooks/useModal";
 import { Modal } from "@/components/ui/modal";
 import Badge from "@/components/ui/badge/Badge";
@@ -76,8 +76,11 @@ const ProductTableBodyDelete: React.FC<NewsTableBodyProps> = ({
                 <Button onClick={openModal} className="w-20" size="xxs" variant="info" startIcon={<FaEye />}>
                   Chi tiết
                 </Button>
-                <Button className="w-20" size="xxs" variant="danger" startIcon={<RiResetLeftFill />}>
+                <Button className="w-20" size="xxs" variant="warning" startIcon={<RiResetLeftFill />}>
                   Khôi phục
+                </Button>
+                <Button className="w-20" size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
+                  Xóa vĩnh viễn
                 </Button>
               </div>
             </TableCell>

@@ -13,7 +13,7 @@ export default function ProductPage() {
     <div>
       <PageBreadcrumb pageTitle="Quản lý sản phẩm"/>
       <div className="space-y-6">
-        <ComponentCard title="Danh sách sản phẩm" isDelete={true} linkBtn="products" titleBtn="Sản Phẩm" isAdd={true}>
+        <ComponentCard title="Danh sách sản phẩm" isDelete={false} linkBtn="products" titleBtn="Sản Phẩm" isAdd={true}>
           <ProductTable />
         </ComponentCard>
       </div>

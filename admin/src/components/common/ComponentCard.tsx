@@ -51,7 +51,7 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
                 </Button>
               )}
             </Link>
-            {isDelete ? (
+            {!isDelete ? (
               <Link href={"/"+linkBtn+"/deleted"}>
                 <Button size="sm" variant="outline_danger" startIcon={<RiDeleteBin5Fill />}>
                   {titleBtn} Đã Xóa
