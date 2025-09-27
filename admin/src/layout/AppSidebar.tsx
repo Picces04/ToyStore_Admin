@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
   BoxCubeIcon,
+  CalenderIcon,
   ChevronDownIcon,
   HorizontaLDots,
   ListIcon,
@@ -21,7 +22,7 @@ import { AiOutlineProduct,AiOutlineHome } from "react-icons/ai";
 import { RiDiscountPercentLine } from "react-icons/ri";
 import { GrDeliver } from "react-icons/gr";
 import { LiaWarehouseSolid } from "react-icons/lia";
-import { MdBorderColor } from "react-icons/md";
+import { MdBorderColor,MdOutlineCategory} from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { NavItem } from "@/types/context";
 
@@ -47,6 +48,11 @@ const navItems: NavItem[] = [
     path: "/warehouses",
   },
   {
+    icon: <MdOutlineCategory size={20} />,
+    name: "Quản lý danh mục",
+    path: "/categories",
+  },
+  {
     icon: <AiOutlineProduct size={20} />,
     name: "Quản lý sản phẩm",
     path: "/products",
@@ -56,11 +62,6 @@ const navItems: NavItem[] = [
     name: "Quản lý đơn hàng",
     path: "/orders",
   },
-  // {
-  //   icon: <GridIcon />,
-  //   name: "Dashboard",
-  //   subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  // },
   {
     icon: <FaRegNewspaper size={20} />,
     name: "Tin Tức",
@@ -79,17 +80,16 @@ const navItems: NavItem[] = [
       { name: "Phân quyền", path: "/employees/authorization", pro: false }
     ],
   },
-  // {
-  //   icon: <CalenderIcon />,
-  //   name: "Calendar",
-  //   path: "/calendar",
-  // },
   {
     icon: <UserCircleIcon />,
     name: "User Profile",
     path: "/profile",
   },
-
+  {
+    icon: <CalenderIcon />,
+    name: "Calendar",
+    path: "/calendar",
+  },
   {
     name: "Forms",
     icon: <ListIcon />,

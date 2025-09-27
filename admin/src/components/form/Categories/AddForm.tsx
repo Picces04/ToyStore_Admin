@@ -64,7 +64,7 @@ export default function AddForm() {
       />
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">
-          Thêm đơn hàng
+          Thêm danh mục
         </Button>
       </div>
     </Form>
