@@ -6,13 +6,11 @@ import {
   TableRow,
 } from "../../../ui/table";
 
-import { RiResetLeftFill } from "react-icons/ri";
-
-import Image from "next/image";
 import Button from "@/components/ui/button/Button";
-import { FaDeleteLeft, FaEye } from "react-icons/fa6";
+import { FaDeleteLeft } from "react-icons/fa6";
 import { useModal } from "@/hooks/useModal";
 import { Modal } from "@/components/ui/modal";
+import { RiResetLeftFill } from "react-icons/ri";
 
 interface User {
   image: string;
@@ -44,35 +42,23 @@ const CategoriesTableBodyDelete: React.FC<NewsTableBodyProps> = ({
             </TableCell>
             
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              <div className="flex -space-x-2">
-                <div className="w-15 h-15 overflow-hidden rounded-full">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={order.user.image}
-                    alt={order.user.name}
-                  />
-                </div>
-              </div>
+              Trung thu
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              {order.projectName}
+              Trẻ em 5 - 10 tuổi
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              28/8/2025
+              Mặt lạ
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               Nguyễn Văn A
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               <div className="flex flex-col gap-2">
-                <Button onClick={openModal} className="w-20" size="xxs" variant="info" startIcon={<FaEye />}>
-                  Chi tiết
-                </Button>
                 <Button className="w-20" size="xxs" variant="warning" startIcon={<RiResetLeftFill />}>
                   Khôi phục
                 </Button>
-                <Button className="w-20" size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
+                <Button className="w-20" onClick={openModal} size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
                   Xóa
                 </Button>
               </div>

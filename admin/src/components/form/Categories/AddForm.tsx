@@ -3,11 +3,9 @@ import { useFormContext } from "@/context/FormContext";
 import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import InputForm from "../form-elements/InputForm";
-import TextAreaForm from "../form-elements/TextAreaForm";
-import ImageInputForm from "../form-elements/ImageInputForm";
-import DatePickerForm from "../form-elements/DatePickerForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
+import SelectForm from "../form-elements/SelectForm";
 
 export default function AddForm() {
   const { values, setErrors} = useFormContext();
@@ -50,18 +48,10 @@ export default function AddForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit} mode="multipart">
-      <InputForm label="Tiêu đề" name="title" placeholder="Nhập tiêu đề" />
-      <ImageInputForm label="Hình ảnh" name="image" />
-      <TextAreaForm label="Nội dung" name="content" placeholder="Nhập nội dung" />
-      <DatePickerForm
-        id="publishDate"
-        name="publishDate"
-        label="Ngày đăng"
-        placeholder="Chọn ngày đăng"
-        mode="single"
-        required
-      />
+    <Form onSubmit={handleSubmit}>
+      <InputForm label="Tên danh mục" name="name" placeholder="Nhập tên danh mục" />
+      <SelectForm className="w-full" label="Danh mục cha" name="categoryParent" placeholder="Chọn danh mục cha" options={[{value: '1', label: 'Danh mục cha 1'}, {value: '2', label: 'Danh mục cha 2'}]} />
+      <SelectForm className="w-full" label="Danh mục con" name="CategoryChild" placeholder="Chọn danh mục con" options={[{value: '1', label: 'Danh mục con 1'}, {value: '2', label: 'Danh mục con 2'}]} />
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">
           Thêm danh mục

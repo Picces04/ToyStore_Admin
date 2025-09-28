@@ -4,10 +4,9 @@ import Form from "../Form";
 import Button from "@/components/ui/button/Button";
 import { usePrefill } from "@/hooks/usePrefill";
 import InputForm from "../form-elements/InputForm";
-import TextAreaForm from "../form-elements/TextAreaForm";
-import ImageInputForm from "../form-elements/ImageInputForm";
 import { useNotification } from "@/context/NotificationContext";
 import { FaRegSmileBeam } from "react-icons/fa";
+import SelectForm from "../form-elements/SelectForm";
 
 export default function EditForm() {
   const { values, setErrors } = useFormContext();
@@ -17,11 +16,9 @@ export default function EditForm() {
   // Populate dữ liệu cũ (edit)
   // Populate dữ liệu cũ (edit) chỉ 1 lần khi mount
   usePrefill({
-    title: "Tiêu đề có sẵn",
-    content: "<p>Nội dung có sẵn</p>",
-    category: ["news"],
-    email: "abc@example.com",
-    image: "https://tse1.mm.bing.net/th/id/OIP.CFG1RgZ9gTRtNgk_wWxG8QHaEO?rs=1&pid=ImgDetMain&o=7&rm=3",
+    name: "Trung Thu",
+    categoryChild: '1',
+    categoryParent: '2',
   });
 
 
@@ -60,13 +57,13 @@ export default function EditForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit} mode="multipart">
-      <InputForm label="Tiêu đề" name="title" placeholder="Nhập tiêu đề" />
-      <ImageInputForm label="Hình ảnh" name="image" />
-      <TextAreaForm label="Nội dung" name="content" placeholder="Nhập nội dung" />
+    <Form onSubmit={handleSubmit}>
+      <InputForm label="Tên danh mục" name="name" placeholder="Nhập tên danh mục" />
+      <SelectForm className="w-full" label="Danh mục cha" name="categoryParent" placeholder="Chọn danh mục cha" options={[{value: '1', label: 'Danh mục cha 1'}, {value: '2', label: 'Danh mục cha 2'}]} />
+      <SelectForm className="w-full" label="Danh mục con" name="categoryChild" placeholder="Chọn danh mục con" options={[{value: '1', label: 'Danh mục con 1'}, {value: '2', label: 'Danh mục con 2'}]} />
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">
-          Sửa danh mục
+          Thêm danh mục
         </Button>
       </div>
     </Form>

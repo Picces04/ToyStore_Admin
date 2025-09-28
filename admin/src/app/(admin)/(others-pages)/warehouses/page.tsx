@@ -13,7 +13,7 @@ export default function WarehousePage() {
     <div>
       <PageBreadcrumb pageTitle="Quản lý kho hàng"/>
       <div className="space-y-6">
-        <ComponentCard title="Danh sách sản phẩm" isDelete={true} linkBtn="warehouses" titleBtn="Sản Phẩm" isAdd={true}>
+        <ComponentCard title="Danh sách sản phẩm" isDelete={false} linkBtn="warehouses" titleBtn="Sản Phẩm" isAdd={true}>
           <WarehouseTable />
         </ComponentCard>
       </div>
