@@ -7,6 +7,7 @@ import BaseSelect from "../select/select";
 export default function SelectForm({
   name,
   label,
+  size = "md",
   options,
   mode,
   placeholder,
@@ -58,6 +59,7 @@ export default function SelectForm({
   return (
     <BaseSelect
       id={name}
+      size={size}
       name={name}
       label={label}
       options={options}

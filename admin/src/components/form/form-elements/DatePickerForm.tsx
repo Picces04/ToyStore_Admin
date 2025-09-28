@@ -13,6 +13,7 @@ export default function DatePickerForm({
   placeholder = "Chọn ngày",
   mode = "single",
   required,
+  size = "md",
 }: DatePickerFormProps) {
   const { values, setValue, errors } = useFormContext();
 
@@ -36,6 +37,7 @@ export default function DatePickerForm({
         placeholder={placeholder}
         value={values[name]}
         onChange={(val) => setValue(name, val)}
+        size={size}
       />
       {errorMsg && (
         <p className="text-red-500 text-sm mt-1">{errorMsg}</p>

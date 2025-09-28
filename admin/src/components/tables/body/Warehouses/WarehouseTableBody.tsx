@@ -5,8 +5,6 @@ import {
   TableCell,
   TableRow,
 } from "../../../ui/table";
-
-import Image from "next/image";
 import Button from "@/components/ui/button/Button";
 import Link from "next/link";
 import { FaWrench,FaEye  } from "react-icons/fa";
@@ -62,6 +60,12 @@ const WarehouseTableBody: React.FC<WarehousesTableBodyProps> = ({
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               <Badge color="success" size="sm">Hàng cũ</Badge>
+            </TableCell>
+            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+              Nguyễn Văn A
+            </TableCell>
+            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+              Nguyễn Văn A
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               <div className="flex flex-col gap-2">

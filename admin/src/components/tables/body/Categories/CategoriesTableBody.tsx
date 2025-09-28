@@ -43,13 +43,10 @@ const CategoriesTableBody: React.FC<NewsTableBodyProps> = ({
             </TableCell>
             
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              Trung thu
+              Ô tô điều khiển
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              Trẻ em 5 - 10 tuổi
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              Mặt lạ
+              Xe ô tô
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               Nguyễn Văn A

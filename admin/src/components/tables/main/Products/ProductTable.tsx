@@ -21,7 +21,7 @@ interface Order {
   budget: string;
 }
 
-const title = ["STT",'Hình ảnh','Tên sản phẩm',"Giá","Số lượng","Trạng thái","Tình trạng","Hành động"]
+const title = ["STT",'Hình ảnh','Tên sản phẩm',"Giá","Số lượng","Trạng thái","Tình trạng","Người tạo","Người sửa","Hành động"]
 
 // Define the table data using the interface
 const tableData: Order[] = [

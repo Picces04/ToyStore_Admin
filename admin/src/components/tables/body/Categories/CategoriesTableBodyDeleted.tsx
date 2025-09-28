@@ -42,13 +42,10 @@ const CategoriesTableBodyDelete: React.FC<NewsTableBodyProps> = ({
             </TableCell>
             
             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              Trung thu
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-              Trẻ em 5 - 10 tuổi
+              Mặt lạ
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              Mặt lạ
+              Trung thu
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               Nguyễn Văn A

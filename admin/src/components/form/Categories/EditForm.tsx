@@ -17,7 +17,6 @@ export default function EditForm() {
   // Populate dữ liệu cũ (edit) chỉ 1 lần khi mount
   usePrefill({
     name: "Trung Thu",
-    categoryChild: '1',
     categoryParent: '2',
   });
 
@@ -60,7 +59,6 @@ export default function EditForm() {
     <Form onSubmit={handleSubmit}>
       <InputForm label="Tên danh mục" name="name" placeholder="Nhập tên danh mục" />
       <SelectForm className="w-full" label="Danh mục cha" name="categoryParent" placeholder="Chọn danh mục cha" options={[{value: '1', label: 'Danh mục cha 1'}, {value: '2', label: 'Danh mục cha 2'}]} />
-      <SelectForm className="w-full" label="Danh mục con" name="categoryChild" placeholder="Chọn danh mục con" options={[{value: '1', label: 'Danh mục con 1'}, {value: '2', label: 'Danh mục con 2'}]} />
       <div className="flex justify-center">
         <Button type="submit" variant="primary" className="mt-4" size="md">
           Thêm danh mục

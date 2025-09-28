@@ -77,6 +77,7 @@ interface FormProps {
 interface SelectFieldProps {
   name: string;
   label?: string;
+  size?:string;
   options: { value: string; label: string }[];
   mode?: "multiple" | "tags" | undefined;
   placeholder?: string;
@@ -115,8 +116,9 @@ interface BaseSelectProps {
   id?: string;
   name: string;
   label?: string;
+  size?:string;
   options: { label: string; value: string }[];
-  value: string | string[] | undefined;
+  value?: string | string[] | undefined;
   mode?: "multiple" | "tags";
   placeholder?: string;
   disabled?: boolean;
@@ -172,6 +174,7 @@ type DatePickerFormProps = {
   id: string;
   name: string;
   label?: string;
+  size?:string;
   className?: string;
   placeholder?: string;
   mode?: "single" | "multiple" | "range" | "time";
@@ -182,6 +185,7 @@ type BaseDatePickerProps = {
   id: string;
   name: string;
   className?: string;
+  size?:string;
   mode?: "single" | "multiple" | "range" | "time";
   defaultDate?: flatpickr.Options.DateOption;
   placeholder?: string;

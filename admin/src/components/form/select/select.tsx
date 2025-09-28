@@ -22,11 +22,23 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
   onBlur,
   onSearch,
   searchValue = "",
+  size = "md", // default
 }) => {
   // Filter Option theo label search
   const filteredOptions = options.filter((opt) =>
     opt.label.toLowerCase().includes(searchValue.toLowerCase())
   );
+
+  // Map size custom sang AntD + Tailwind
+  const sizeMap: Record<string, { antSize: "small" | "middle" | "large"; cls: string }> = {
+    xxs: { antSize: "small", cls: "h-6 text-xs px-2 py-0.5" },
+    xs: { antSize: "small", cls: "h-8 text-xs px-2 py-1" },
+    sm: { antSize: "middle", cls: "h-9 text-sm px-3 py-1.5" },
+    md: { antSize: "middle", cls: "h-11 text-sm px-4 py-2.5" },
+    lg: { antSize: "large", cls: "h-13 text-base px-5 py-3" },
+  };
+
+  const { antSize, cls } = sizeMap[size];
 
   return (
     <div className={`flex flex-col mt-4 mb-4 ${className}`}>
@@ -43,10 +55,10 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
         disabled={disabled}
         onSearch={onSearch}
         filterOption={false} // tắt filter mặc định
-        className={`rounded-md border px-4 py-10${
+        className={`rounded-md border ${cls} ${
           error ? "border-red-500" : "border-gray-300"
         }`}
-        size="large"
+        size={antSize}
         popupRender={(menu) =>
           mode === "multiple" && options.length > 0 ? (
             <div className="rounded-md shadow-lg">

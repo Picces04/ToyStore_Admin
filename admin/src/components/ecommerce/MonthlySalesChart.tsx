@@ -40,24 +40,35 @@ export default function MonthlySalesChart() {
     },
     xaxis: {
       categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+        "Tháng 1",
+        "Tháng 2",
+        "Tháng 3",
+        "Tháng 4",
+        "Tháng 5",
+        "Tháng 6",
+        "Tháng 7",
+        "Tháng 8",
+        "Tháng 9",
+        "Tháng 10",
+        "Tháng 11",
+        "Tháng 12",
       ],
       axisBorder: {
         show: false,
       },
       axisTicks: {
         show: false,
+      },
+      labels: {
+        show: true,
+        rotate: -45,       // xoay chéo 45 độ
+        rotateAlways: true, // ⚡ luôn luôn xoay
+        hideOverlappingLabels: false,
+        trim: false,
+        offsetY: 5,        // đẩy chữ xuống một chút cho thoáng
+        style: {
+          fontSize: "12px",
+        },
       },
     },
     legend: {
@@ -121,7 +132,7 @@ export default function MonthlySalesChart() {
           <Dropdown
             isOpen={isOpen}
             onClose={closeDropdown}
-            className="w-40 p-2"
+            className="w-50 p-2"
           >
             <DropdownItem
               onItemClick={closeDropdown}
