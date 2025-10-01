@@ -47,6 +47,11 @@ const navItems: NavItem[] = [
     path: "/warehouses",
   },
   {
+    icon: <LiaWarehouseSolid size={20} />,
+    name: "Quản lý danh mục",
+    path: "/categories",
+  },
+  {
     icon: <AiOutlineProduct size={20} />,
     name: "Quản lý sản phẩm",
     path: "/products",
@@ -63,12 +68,12 @@ const navItems: NavItem[] = [
   // },
   {
     icon: <FaRegNewspaper size={20} />,
-    name: "Tin Tức",
+    name: "Quản lýTin Tức",
     path: "/news",
   },
   {
     icon: <RiDiscountPercentLine size={20} />,
-    name: "Khuyễn mãi",
+    name: "Quản lý Khuyến mãi",
     path: "/promotions",
   },
   {

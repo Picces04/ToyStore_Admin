@@ -74,7 +74,7 @@ const CustomerTableBody: React.FC<CustomersTableBodyProps> = ({
                 <Button onClick={openModal} className="w-20" size="xxs" variant="info" startIcon={<FaEye />}>
                   Chi tiết
                 </Button>
-                <Link href={"/products/"+order.id}>
+                <Link href={"/customers/"+order.id}>
                   <Button className="w-20" size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
                     Xóa
                   </Button>

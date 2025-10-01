@@ -6,33 +6,31 @@ import {
   TableRow,
 } from "../../../ui/table";
 
-import Image from "next/image";
+import { RiResetLeftFill } from "react-icons/ri";
+
 import Button from "@/components/ui/button/Button";
-import Link from "next/link";
-import { FaWrench,FaEye  } from "react-icons/fa";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { Modal } from "@/components/ui/modal";
+import { FaEye } from "react-icons/fa6";
 import { useModal } from "@/hooks/useModal";
-
-
+import { Modal } from "@/components/ui/modal";
+import Badge from "@/components/ui/badge/Badge";
 
 interface User {
   image: string;
   name: string;
 }
 
-interface SuppliersTableRow {
+interface CategoryTableRow {
   id: string | number;
   user: User;
   projectName: string;
   // Add other fields if needed
 }
 
-interface SuppliersTableBodyProps {
-  tableData: SuppliersTableRow[];
+interface CategoryTableBodyProps {
+  tableData: CategoryTableRow[];
 }
 
-const SupplierTableBody: React.FC<SuppliersTableBodyProps> = ({
+const CategoryTableBodyDelete: React.FC<CategoryTableBodyProps> = ({
   tableData,
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
@@ -52,29 +50,25 @@ const SupplierTableBody: React.FC<SuppliersTableBodyProps> = ({
               0123456789
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              nhacungcap@gmail.com
+              khachhang@gmail.com
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              123 Đường ABC, Phường XYZ, Quận 1, TP.HCM
+                123 Đường ABC, Phường XYZ, Quận 1, TP.HCM
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-              Không có ghi chú
+              Không có ghi chú 
+            </TableCell>
+            <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+              <Badge color="success" size="sm">Ngừng hoạt động</Badge>
             </TableCell>
             <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
               <div className="flex flex-col gap-2">
-                <Link href={"/suppliers/edit/"+order.id}>
-                  <Button className="w-20" size="xxs" variant="warning" startIcon={<FaWrench />}>
-                    Sửa
-                  </Button>
-                </Link>
                 <Button onClick={openModal} className="w-20" size="xxs" variant="info" startIcon={<FaEye />}>
                   Chi tiết
                 </Button>
-                <Link href={"/suppliers/"+order.id}>
-                  <Button className="w-20" size="xxs" variant="danger" startIcon={<FaDeleteLeft />}>
-                    Xóa
-                  </Button>
-                </Link>
+                <Button className="w-20" size="xxs" variant="danger" startIcon={<RiResetLeftFill />}>
+                  Khôi phục
+                </Button>
               </div>
             </TableCell>
           </TableRow>
@@ -84,7 +78,7 @@ const SupplierTableBody: React.FC<SuppliersTableBodyProps> = ({
         <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Chi tiết nhà cung cấp
+              Chi tiết khách hàng
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Update your details to keep your profile up-to-date.
@@ -96,4 +90,4 @@ const SupplierTableBody: React.FC<SuppliersTableBodyProps> = ({
   );
 }
 
-export default SupplierTableBody;
+export default CategoryTableBodyDelete;

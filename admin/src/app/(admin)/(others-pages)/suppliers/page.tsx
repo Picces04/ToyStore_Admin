@@ -13,7 +13,7 @@ export default function CustomerPage() {
     <div>
       <PageBreadcrumb pageTitle="Quản lý nhà cung cấp"/>
       <div className="space-y-6">
-        <ComponentCard title="Danh sách nhà cung cấp" isDelete={true} linkBtn="suppliers" titleBtn="Nhà Cung Cấp" isAdd={true}>
+        <ComponentCard title="Danh sách nhà cung cấp" isDelete={false} linkBtn="suppliers" titleBtn="Nhà Cung Cấp" isAdd={true}>
           <SupplierTable />
         </ComponentCard>
       </div>

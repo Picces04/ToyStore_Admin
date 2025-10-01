@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Khách hàng cấp Đã Xóa"
+  title: "Khách hàng Đã Xóa"
 };
 
 export default function DeletedCustomerPage() {
